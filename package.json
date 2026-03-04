@@ -1,0 +1,9 @@
+
+{
+  "name": "titan-riggers",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@octokit/auth-oauth-app": "^6.1.2"
+  }
+}
