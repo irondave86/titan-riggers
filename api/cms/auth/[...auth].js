@@ -8,7 +8,7 @@ function sendJson(res, status, data) {
 }
 
 export default async function handler(req, res) {
-  const parts = (req.query.auth || []);
+  const parts = Array.isArray(req.query.auth) ? req.query.auth : [req.query.auth];
   const action = parts[0];
 
   const clientId = process.env.GITHUB_CLIENT_ID;
