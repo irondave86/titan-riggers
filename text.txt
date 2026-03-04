@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Titan Riggers and Erectors provides safe, efficient rigging and machinery moving for industrial and commercial facilities." />
+  <title>Titan Riggers and Erectors | Rigging & Machinery Moving</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a33;
+      --muted:#a8b4d6;
+      --text:#eef2ff;
+      --accent:#f59e0b;   /* amber */
+      --accent2:#22c55e;  /* green */
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 500px at 20% 0%, rgba(245,158,11,.18), transparent 55%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(34,197,94,.12), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:14px;
+      backdrop-filter: blur(6px);
+    }
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(245,158,11,.45)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(245,158,11,.95), rgba(245,158,11,.72));
+      color:#1b1202;
+      border-color: rgba(245,158,11,.35);
+    }
+    .btn.primary:hover{border-color: rgba(255,255,255,.25)}
+    .btn.outline{
+      background: transparent;
+      border-color: rgba(255,255,255,.16);
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.3px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(245,158,11,.95), rgba(34,197,94,.55));
+      display:grid; place-items:center;
+      box-shadow: var(--shadow);
+    }
+    .logo svg{opacity:.92}
+    nav ul{
+      margin:0; padding:0; list-style:none;
+      display:flex; gap:18px; align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:10px;
+    }
+    nav a:hover{color:var(--text); background: rgba(255,255,255,.05)}
+    .nav-actions{display:flex; gap:10px; align-items:center}
+    .hamburger{display:none}
+
+    /* Hero */
+    .hero{padding:54px 0 26px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height:1.08;
+      letter-spacing:-.5px;
+    }
+    .lead{color:var(--muted); font-size:18px; margin:0 0 18px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .trust{
+      margin-top:18px;
+      display:flex; gap:12px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .trust span{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px; border:1px solid var(--line); border-radius:14px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .hero-card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card .pad{padding:18px}
+    .hero-card h3{margin:0 0 8px; font-size:16px}
+    .hero-card p{margin:0; color:var(--muted); font-size:14px}
+    .stat-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    .stat{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(16,26,51,.55);
+    }
+    .stat b{display:block; font-size:18px}
+    .stat small{color:var(--muted)}
+    .hero-card .bar{
+      display:flex; gap:10px; padding:14px 18px;
+      border-top:1px solid var(--line);
+      background: rgba(11,18,32,.4);
+      align-items:center; justify-content:space-between;
+    }
+
+    /* Sections */
+    section{padding:34px 0}
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:14px; flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.3px;
+    }
+    .section-head p{margin:0; color:var(--muted); max-width:60ch}
+    .grid-3{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-2{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--muted)}
+    .icon{
+      width:42px; height:42px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: rgba(245,158,11,.12);
+      border:1px solid rgba(245,158,11,.25);
+      margin-bottom:10px;
+    }
+
+    .list{
+      margin:12px 0 0;
+      padding:0;
+      list-style:none;
+      color:var(--muted);
+      display:grid;
+      gap:10px;
+    }
+    .list li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background: rgba(16,26,51,.35);
+    }
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(34,197,94,.2);
+      border:1px solid rgba(34,197,94,.35);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+
+    /* Contact */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    form{display:grid; gap:10px}
+    label{font-size:13px; color:var(--muted)}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(11,18,32,.55);
+      color: var(--text);
+      outline:none;
+    }
+    input:focus, textarea:focus{border-color: rgba(245,158,11,.55)}
+    textarea{min-height:120px; resize:vertical}
+    .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .contact-wrap{grid-template-columns: 1fr}
+      nav ul{display:none}
+      .hamburger{display:inline-flex}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Titan Riggers and Erectors">
+        <div class="logo" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l8 4v6c0 5-3.3 9.4-8 10-4.7-.6-8-5-8-10V6l8-4z" stroke="white" stroke-width="1.6"/>
+            <path d="M8 11h8" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M10 15h4" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:14px; color:var(--muted); font-weight:700; letter-spacing:.2px;">Titan</div>
+          <div style="margin-top:-2px;">Riggers & Erectors</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">Why Titan</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn outline hamburger" href="#contact">Menu</a>
+        <a class="btn" href="tel:+10000000000" id="phoneTop">Call</a>
+        <a class="btn primary" href="#contact">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container">
+      <div class="pill"><span class="dot"></span> Rigging • Machinery Moving • Plant Relocation</div>
+
+      <div class="hero-grid">
+        <div>
+          <h1>Safe, precise machinery moves—done right the first time.</h1>
+          <p class="lead">
+            <strong>Titan Riggers and Erectors</strong> handles heavy equipment moving, setting, and installation for
+            industrial and commercial facilities. We plan every pick, protect your uptime, and execute with care.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#contact">Get a Fast Quote</a>
+            <a class="btn" href="#services">See Services</a>
+            <a class="btn outline" href="mailto:quotes@titanriggers.com" id="emailTop">Email</a>
+          </div>
+
+          <div class="trust">
+            <span>✅ Safety-first planning</span>
+            <span>✅ Insured & jobsite-ready</span>
+            <span>✅ Tight access specialists</span>
+            <span>✅ On-time, on-budget</span>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick info">
+          <div class="pad">
+            <h3>What we move</h3>
+            <p>CNCs • presses • conveyors • chillers • transformers • lines • forklifts • crates & skids</p>
+
+            <div class="stat-grid" role="list">
+              <div class="stat" role="listitem">
+                <b>Rigging</b><small>Pick plans & execution</small>
+              </div>
+              <div class="stat" role="listitem">
+                <b>Machinery Moving</b><small>In-plant or cross-town</small>
+              </div>
+              <div class="stat" role="listitem">
+                <b>Erection</b><small>Set, level, align</small>
+              </div>
+              <div class="stat" role="listitem">
+                <b>Relocation</b><small>Shutdown support</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div style="color:var(--muted); font-size:13px;">
+              Need service <b>this week?</b> Tell us the site + weight.
+            </div>
+            <a class="btn primary" href="#contact">Start</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Services</h2>
+          <p>From single-machine moves to full plant relocations—planned, permitted, and executed safely.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🏗️</div>
+          <h3>Rigging & Setting</h3>
+          <p>Forklift, gantry, skates, jacks, and crane coordination—set, level, and place with precision.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🚚</div>
+          <h3>Machinery Moving</h3>
+          <p>In-plant moves, dock-to-floor, and cross-facility transport with protective packing and bracing.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏭</div>
+          <h3>Plant Relocations</h3>
+          <p>Shutdown planning, sequencing, labeling, and re-install coordination to minimize downtime.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧰</div>
+          <h3>Assembly / Erection</h3>
+          <p>Equipment erection, alignment support, and installation prep for new lines and expansions.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📦</div>
+          <h3>Crating & Skidding</h3>
+          <p>Custom skids, blocking/bracing, and protection for sensitive machinery and long-haul transport.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧭</div>
+          <h3>Site Surveys</h3>
+          <p>Doorways, slab loads, access routes, lift points, and risk assessment—before we mobilize.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Industries we support</h2>
+          <p>Manufacturing, energy, logistics, and specialized facilities—tight schedules welcome.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card"><h3>Manufacturing</h3><p>CNC, stamping, packaging, injection molding, assembly lines.</p></div>
+        <div class="card"><h3>Warehousing & Logistics</h3><p>Conveyors, sorters, racking support, dock equipment.</p></div>
+        <div class="card"><h3>Food & Beverage</h3><p>Washdown-safe moves, downtime-conscious sequencing.</p></div>
+        <div class="card"><h3>Energy & Utilities</h3><p>Transformers, switchgear, generators, pumps, compressors.</p></div>
+        <div class="card"><h3>Construction / Contractors</h3><p>Set-in-place support, coordination with trades and cranes.</p></div>
+        <div class="card"><h3>Healthcare / Labs</h3><p>Sensitive equipment handling and controlled access planning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Why Titan</h2>
+          <p>We bring the planning discipline of large contractors with the responsiveness of a local crew.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Safety & planning first</h3>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Lift plans and step-by-step move sequencing</span></li>
+            <li><span class="check">✓</span><span>Jobsite hazard review and pre-task brief</span></li>
+            <li><span class="check">✓</span><span>Protective floor coverage and equipment guarding</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Clean execution</h3>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Specialists for tight access, low headroom, and precision placement</span></li>
+            <li><span class="check">✓</span><span>Clear communication with your team and other trades</span></li>
+            <li><span class="check">✓</span><span>On-time closeout and site cleanliness</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Our process</h2>
+          <p>Simple, predictable, and built to protect your schedule.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1) Scope</h3>
+          <p>We confirm weights, dimensions, access, schedule, and site rules.</p>
+        </div>
+        <div class="card">
+          <h3>2) Plan</h3>
+          <p>We choose methods (forklift/gantry/jacks/skates/crane) and sequence the move.</p>
+        </div>
+        <div class="card">
+          <h3>3) Execute</h3>
+          <p>We protect floors/walls, move safely, and place equipment to spec.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Request a quote</h2>
+          <p>Send the job details and we’ll get back quickly. If it’s urgent, call.</p>
+        </div>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="card">
+          <h3>Contact</h3>
+          <p style="margin-bottom:12px">Update these placeholders with your real info:</p>
+          <ul class="list">
+            <li><span class="check">✓</span><span><b>Phone:</b> <a href="tel:+10000000000" id="phoneBottom">+1 (000) 000-0000</a></span></li>
+            <li><span class="check">✓</span><span><b>Email:</b> <a href="mailto:quotes@titanriggers.com" id="emailBottom">quotes@titanriggers.com</a></span></li>
+            <li><span class="check">✓</span><span><b>Service Area:</b> “Add your metro/state here”</span></li>
+            <li><span class="check">✓</span><span><b>Hours:</b> Mon–Sat • On-call for shutdowns</span></li>
+          </ul>
+          <p style="margin-top:12px; color:var(--muted); font-size:14px">
+            Tip: include approximate <b>weight</b>, <b>pickup/drop</b>, <b>access notes</b>, and <b>date needed</b>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Get a fast quote</h3>
+
+          <!-- Formspree: replace YOUR_FORM_ID with your actual ID after you create it -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="company">Company</label>
+                <input id="company" name="company" placeholder="Company (optional)" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" placeholder="(555) 555-5555" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" placeholder="you@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="pickup">Pickup / Site</label>
+                <input id="pickup" name="pickup" placeholder="City, State" />
+              </div>
+              <div>
+                <label for="needed">Date Needed</label>
+                <input id="needed" name="needed" placeholder="MM/DD/YYYY or 'this week'" />
+              </div>
+            </div>
+
+            <div>
+              <label for="details">Job Details</label>
+              <textarea id="details" name="details" placeholder="Equipment, weight, dimensions, access notes, stairs/ramps, dock/ground level, etc." required></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Send Request</button>
+            <p style="margin:8px 0 0; color:var(--muted); font-size:12px;">
+              By submitting, you agree to be contacted about this request.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>© <span id="year"></span> Titan Riggers and Erectors. All rights reserved.</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn outline" href="#services">Services</a>
+        <a class="btn outline" href="#contact">Quote</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Auto year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Optional: Set your phone/email once and have it update both places
+  // Replace these with your real details:
+  const PHONE = "+1 (000) 000-0000";
+  const PHONE_LINK = "+10000000000";
+  const EMAIL = "quotes@titanriggers.com";
+
+  // Update top & bottom phone links
+  for (const el of [document.getElementById('phoneTop'), document.getElementById('phoneBottom')]) {
+    if (!el) continue;
+    el.textContent = "Call " + PHONE;
+    el.href = "tel:" + PHONE_LINK;
+  }
+
+  // Update top & bottom email links
+  for (const el of [document.getElementById('emailTop'), document.getElementById('emailBottom')]) {
+    if (!el) continue;
+    el.textContent = EMAIL;
+    el.href = "mailto:" + EMAIL;
+  }
+</script>
+</body>
+</html>
