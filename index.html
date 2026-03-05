@@ -232,8 +232,20 @@
   padding:82px 0 26px 0;
  
 }
-
-.hero > *{
+/* Static Titan hero background */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background-image:url("titan-bg1.png");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:.18;
+  z-index:0;
+  pointer-events:none;
+  transform:scale(1.05);
+}.hero > *{
   position:relative;
   z-index:1;
 }
