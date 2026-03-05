@@ -228,7 +228,33 @@
     .hero{
       padding:82px 0 26px 0;
     }
-    .hero-grid{
+    .hero h1{
+  opacity:0;
+  transform:translateY(20px);
+  animation:heroFade 1s ease forwards;
+  animation-delay:.2s;
+}
+
+.hero p{
+  opacity:0;
+  transform:translateY(20px);
+  animation:heroFade 1s ease forwards;
+  animation-delay:.4s;
+}
+
+.hero .cta{
+  opacity:0;
+  transform:translateY(20px);
+  animation:heroFade 1s ease forwards;
+  animation-delay:.6s;
+}
+
+@keyframes heroFade{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}    .hero-grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
       gap:26px;
