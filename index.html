@@ -1,303 +1,854 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Titan Riggers & Erectors | Machinery Moving Washington</title>
+  <title>Titan Riggers & Erectors | Machinery Moving Washington</title>
+  <meta name="description" content="Titan Riggers & Erectors provides safe machinery moving, rigging, and plant relocation services across Washington." />
 
-<meta name="description" content="Titan Riggers & Erectors provides safe machinery moving, rigging, and plant relocation services across Washington.">
+  <style>
+    :root{
+      --bg:#0c1117;
+      --bg2:#0a0f14;
+      --panel:#101824;
+      --panel2:#0f1722;
+      --stroke:rgba(255,255,255,.08);
+      --text:#eaf0f7;
+      --muted:rgba(234,240,247,.72);
+      --muted2:rgba(234,240,247,.55);
+      --brand:#f5b64a;
+      --brand2:#d59a2f;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --radius2:22px;
+      --max:1120px;
+    }
 
-<style>
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      background: radial-gradient(1200px 800px at 18% 12%, rgba(245,182,74,.09), transparent 55%),
+                  radial-gradient(900px 600px at 78% 24%, rgba(120,180,255,.06), transparent 55%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      overflow-x:hidden;
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#0c1117;
-color:white;
-overflow-x:hidden;
-}
+    /* ===== Background Logo (robust) =====
+       - Always shows a faint built-in watermark (SVG)
+       - If titan-bg.png exists, it overlays on top
+    */
+    .bg-logo{
+      position:fixed;
+      inset:0;
+      z-index:-5;
+      pointer-events:none;
+    }
+    .bg-logo::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(700px 500px at 30% 20%, rgba(245,182,74,.06), transparent 60%),
+        radial-gradient(900px 650px at 70% 55%, rgba(255,255,255,.03), transparent 65%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+      opacity:1;
+    }
 
-/* BACKGROUND LOGO */
+    /* Built-in watermark fallback (always works) */
+    .bg-logo::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:min(680px, 92vw);
+      height:min(680px, 92vw);
+      opacity:.085;
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:contain;
 
-.bg-logo{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-opacity:.06;
-z-index:-1;
-}
+      /* inline SVG watermark that says TITAN faintly */
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900' viewBox='0 0 900 900'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.85'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='900' height='900' fill='none'/%3E%3Ccircle cx='450' cy='450' r='360' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.9'%3E%3Cpath d='M190 290 H710' stroke-width='18'/%3E%3Cpath d='M270 290 V645' stroke-width='18'/%3E%3Cpath d='M450 290 V645' stroke-width='18'/%3E%3Cpath d='M630 290 V645' stroke-width='18'/%3E%3C/g%3E%3Ctext x='450' y='535' text-anchor='middle' font-family='Arial' font-size='150' font-weight='800' fill='%23ffffff' fill-opacity='0.85'%3ETITAN%3C/text%3E%3Ctext x='450' y='610' text-anchor='middle' font-family='Arial' font-size='44' font-weight='700' fill='%23ffffff' fill-opacity='0.55'%3ERIGGERS%20%26%20ERECTORS%3C/text%3E%3C/svg%3E");
+    }
 
-.bg-logo img{
-width:180px;
-}
+    /* Overlay your real background logo image if it exists */
+    .bg-logo img{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:240px;          /* <-- background logo size */
+      max-width:72vw;
+      opacity:.10;          /* <-- background logo intensity */
+      filter: drop-shadow(0 18px 50px rgba(0,0,0,.55));
+    }
 
-/* NAVIGATION */
+    /* ===== Layout Helpers ===== */
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px;}
+    .section{padding:74px 0;}
+    .section.tight{padding:52px 0;}
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
+      margin:0;
+      border:0;
+    }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 40px;
-background:#0e141b;
-position:sticky;
-top:0;
-}
+    /* ===== Nav ===== */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(10,15,20,.70);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .nav-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 240px;
+    }
+    .brand img{height:42px; width:auto;}
+    .brand strong{font-size:15px; letter-spacing:.2px;}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .nav-links a{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:650;
+      font-size:14px;
+      opacity:.92;
+      transition:opacity .15s ease;
+    }
+    .nav-links a:hover{opacity:1;}
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      min-width: 240px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background:rgba(16,24,36,.55);
+      box-shadow: var(--shadow2);
+      font-weight:700;
+      font-size:13px;
+      color:var(--text);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .pill .dot{
+      width:10px; height:10px; border-radius:999px;
+      background:var(--brand);
+      box-shadow:0 0 0 5px rgba(245,182,74,.12);
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(245,182,74,.35);
+      background:linear-gradient(180deg, rgba(245,182,74,.98), rgba(213,154,47,.98));
+      color:#151515;
+      text-decoration:none;
+      font-weight:900;
+      box-shadow: 0 16px 40px rgba(245,182,74,.18);
+      transition: transform .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px);}
+    .btn.ghost{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:none;
+      font-weight:800;
+    }
 
-nav img{
-height:40px;
-}
+    /* Mobile menu */
+    .menu-btn{
+      display:none;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(16,24,36,.55);
+      color:var(--text);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:900;
+    }
+    .mobile{
+      display:none;
+      padding:10px 0 18px 0;
+    }
+    .mobile a{
+      display:block;
+      padding:12px 12px;
+      border-radius:12px;
+      color:var(--text);
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(16,24,36,.35);
+      margin-top:10px;
+    }
 
-nav ul{
-display:flex;
-gap:28px;
-list-style:none;
-margin:0;
-padding:0;
-}
+    /* ===== Hero ===== */
+    .hero{
+      padding:82px 0 26px 0;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--brand);
+      font-weight:900;
+      letter-spacing:.2px;
+      text-transform:none;
+      margin-bottom:12px;
+    }
+    .kicker span{
+      display:inline-block;
+      width:10px; height:10px;
+      border-radius:999px;
+      background:var(--brand);
+      box-shadow:0 0 0 6px rgba(245,182,74,.10);
+    }
+    h1{
+      margin:0;
+      font-size:54px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .lead{
+      margin:16px 0 0 0;
+      font-size:18px;
+      color:var(--muted);
+      max-width: 54ch;
+      line-height:1.6;
+    }
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      margin-top:22px;
+      flex-wrap:wrap;
+    }
+    .hero-card{
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(16,24,36,.78), rgba(16,24,36,.48));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(420px 280px at 20% 20%, rgba(245,182,74,.18), transparent 55%),
+                  radial-gradient(520px 360px at 80% 30%, rgba(120,180,255,.10), transparent 60%);
+      opacity:.9;
+      z-index:0;
+    }
+    .hero-card > *{position:relative; z-index:1;}
+    .mini-title{
+      font-weight:950;
+      letter-spacing:.2px;
+      margin:0 0 10px 0;
+      font-size:15px;
+    }
+    .mini{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+    .hero-stats{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    .stat{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(10,15,20,.35);
+      border-radius:14px;
+      padding:12px;
+    }
+    .stat strong{
+      display:block;
+      font-size:18px;
+      letter-spacing:-.3px;
+    }
+    .stat span{
+      display:block;
+      color:var(--muted2);
+      font-size:12px;
+      margin-top:4px;
+      font-weight:750;
+    }
 
-nav a{
-color:white;
-text-decoration:none;
-font-weight:600;
-}
+    /* ===== Cards / Grids ===== */
+    h2{
+      margin:0 0 14px 0;
+      font-size:30px;
+      letter-spacing:-.3px;
+    }
+    .sub{
+      margin:0 0 24px 0;
+      color:var(--muted);
+      line-height:1.65;
+      max-width: 70ch;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(16,24,36,.70), rgba(16,24,36,.42));
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+    .card h3{
+      margin:0 0 8px 0;
+      font-size:16px;
+      letter-spacing:.1px;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+    .list{
+      margin:12px 0 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:14px;
+    }
+    .tag-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .tag{
+      font-size:12px;
+      font-weight:850;
+      color:rgba(234,240,247,.85);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(10,15,20,.25);
+      padding:7px 10px;
+      border-radius:999px;
+    }
 
-/* HERO */
+    /* ===== Process ===== */
+    .process{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:18px;
+    }
+    .step{
+      position:relative;
+      padding:20px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(16,24,36,.62), rgba(16,24,36,.35));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .step::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(380px 220px at 10% 20%, rgba(245,182,74,.14), transparent 55%);
+      opacity:.8;
+    }
+    .step > *{position:relative; z-index:1;}
+    .num{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(245,182,74,.14);
+      border:1px solid rgba(245,182,74,.28);
+      font-weight:950;
+      color:var(--brand);
+      margin-bottom:10px;
+    }
+    .step h3{margin:0 0 8px 0; font-size:16px;}
+    .step ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.75; font-size:14px;}
 
-.hero{
-max-width:1100px;
-margin:auto;
-padding:120px 20px 60px 20px;
-}
+    /* ===== Gallery ===== */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    .shot{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(16,24,36,.35);
+      box-shadow: var(--shadow2);
+    }
+    .shot img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      aspect-ratio: 4 / 3;
+      transform: scale(1.01);
+    }
 
-.hero h1{
-font-size:48px;
-margin-bottom:20px;
-}
+    /* ===== FAQ ===== */
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(16,24,36,.38);
+      border-radius:16px;
+      padding:14px 16px;
+      box-shadow: var(--shadow2);
+    }
+    details + details{margin-top:12px;}
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      color:var(--text);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none;}
+    details p{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
 
-.hero p{
-font-size:18px;
-opacity:.85;
-max-width:650px;
-}
+    /* ===== Contact ===== */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .contact-card{
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(16,24,36,.72), rgba(16,24,36,.40));
+      border-radius: var(--radius2);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    .contact-card h3{margin:0 0 8px 0;}
+    .contact-card p{margin:0; color:var(--muted); line-height:1.65;}
+    .contact-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .muted{
+      color:var(--muted2);
+      font-size:12px;
+      margin-top:12px;
+      line-height:1.5;
+    }
 
-/* SECTIONS */
+    /* ===== Footer ===== */
+    footer{
+      padding:34px 0 42px 0;
+      color:rgba(234,240,247,.55);
+      font-weight:750;
+      text-align:center;
+    }
 
-.section{
-max-width:1100px;
-margin:auto;
-padding:60px 20px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
-
-.card{
-background:#121922;
-padding:25px;
-border-radius:10px;
-}
-
-.card h3{
-margin-top:0;
-}
-
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin-top:30px;
-}
-
-.gallery img{
-width:100%;
-border-radius:10px;
-}
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:40px 20px;
-opacity:.6;
-}
-
-</style>
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr;}
+      h1{font-size:44px;}
+      .nav-links{display:none;}
+      .menu-btn{display:inline-flex;}
+      .nav-right{min-width:auto;}
+      .brand{min-width:auto;}
+      .grid{grid-template-columns:1fr;}
+      .process{grid-template-columns:1fr;}
+      .gallery{grid-template-columns:1fr;}
+      .contact{grid-template-columns:1fr;}
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Background (always visible fallback watermark + optional PNG overlay) -->
+  <div class="bg-logo">
+    <!-- If titan-bg.png exists, it shows. If not, fallback watermark still shows. -->
+    <img src="titan-bg.png" alt="" />
+  </div>
 
-<div class="bg-logo">
-<img src="titan-bg.png">
-</div>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="nav-row">
+        <div class="brand">
+          <img src="titan-nav.png" alt="Titan Riggers & Erectors" />
+          <strong>Titan Riggers & Erectors</strong>
+        </div>
 
-<nav>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
 
-<div style="display:flex;align-items:center;gap:12px;">
-<img src="titan-nav.png">
-<strong>Titan Riggers & Erectors</strong>
-</div>
+        <div class="nav-right">
+          <a class="pill" href="tel:2063003466"><span class="dot"></span> 206-300-3466</a>
+          <button class="menu-btn" id="menuBtn" type="button">Menu</button>
+        </div>
+      </div>
 
-<ul>
-<li><a href="#services">Services</a></li>
-<li><a href="#industries">Industries</a></li>
-<li><a href="#process">Process</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+      <div class="mobile" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#process">Process</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" style="margin-top:12px;" href="tel:2063003466">Call Now</a>
+      </div>
+    </div>
+  </header>
 
-<div>
-<strong>Call 206-300-3466</strong>
-</div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span></span> Serving Washington</div>
+          <h1>Safe, precise machinery moves—done right the first time.</h1>
+          <p class="lead">
+            Titan Riggers & Erectors handles heavy equipment moving, setting, and installation for industrial and commercial facilities across Washington.
+            We show up prepared, protect your facility, and execute with a plan.
+          </p>
 
-</nav>
+          <div class="hero-cta">
+            <a class="btn" href="#contact">Request a Quote</a>
+            <a class="btn ghost" href="#services">See Services</a>
+            <a class="pill" href="tel:2063003466"><span class="dot"></span> Call 206-300-3466</a>
+          </div>
+        </div>
 
-<section class="hero">
+        <div class="hero-card">
+          <p class="mini-title">What you get with Titan</p>
+          <p class="mini">Professional rigging crews. Clean execution. Clear communication. Zero surprises.</p>
 
-<p style="color:#f5b64a;font-weight:700;">Serving Washington</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>Rigging & Setting</strong>
+              <span>Pick plans • precision placement</span>
+            </div>
+            <div class="stat">
+              <strong>Machinery Moving</strong>
+              <span>In-plant • cross-town • staged</span>
+            </div>
+            <div class="stat">
+              <strong>Plant Relocations</strong>
+              <span>Sequenced shutdown support</span>
+            </div>
+            <div class="stat">
+              <strong>WA Coverage</strong>
+              <span>Fast scheduling across WA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h1>Safe, precise machinery moves—done right the first time.</h1>
+  <hr class="divider"/>
 
-<p>
-Titan Riggers & Erectors handles heavy equipment moving, setting, and installation for industrial and commercial facilities across Washington.
-</p>
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="wrap">
+      <h2>Services</h2>
+      <p class="sub">
+        Rigging isn’t just moving weight — it’s protecting assets, controlling risk, and getting production back online on schedule.
+      </p>
 
-</section>
+      <div class="grid">
+        <div class="card">
+          <h3>Rigging & Setting</h3>
+          <p>Controlled lifts, skidding, and precision placement in tight access environments.</p>
+          <ul class="list">
+            <li>Pick plans & lift execution</li>
+            <li>Machine setting & alignment support</li>
+            <li>Confined access moves</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Safe execution</span>
+            <span class="tag">Tight access</span>
+            <span class="tag">Precision</span>
+          </div>
+        </div>
 
-<section id="services" class="section">
+        <div class="card">
+          <h3>Machinery Moving</h3>
+          <p>From single machines to production cells — planned, protected, and clean.</p>
+          <ul class="list">
+            <li>In-plant and cross-town moves</li>
+            <li>Skidding, jacking & rolling</li>
+            <li>Crating and protection</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Asset protection</span>
+            <span class="tag">Clean handling</span>
+            <span class="tag">Reliable crew</span>
+          </div>
+        </div>
 
-<h2>Services</h2>
+        <div class="card">
+          <h3>Plant Relocations</h3>
+          <p>Shutdown coordination and sequenced moves that keep your project on track.</p>
+          <ul class="list">
+            <li>Shutdown support</li>
+            <li>Sequenced line moves</li>
+            <li>Coordination with trades</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Sequencing</span>
+            <span class="tag">Coordination</span>
+            <span class="tag">On schedule</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="cards">
+  <hr class="divider"/>
 
-<div class="card">
-<h3>Rigging & Setting</h3>
-<ul>
-<li>Pick plans & lift execution</li>
-<li>Machine setting & alignment</li>
-<li>Confined access moves</li>
-</ul>
-</div>
+  <!-- INDUSTRIES -->
+  <section id="industries" class="section tight">
+    <div class="wrap">
+      <h2>Industries</h2>
+      <p class="sub">We handle industrial and commercial equipment that requires care, planning, and controlled movement.</p>
 
-<div class="card">
-<h3>Machinery Moving</h3>
-<ul>
-<li>In-plant and cross-town moves</li>
-<li>Skidding, jacking and rolling</li>
-<li>Crating and protection</li>
-</ul>
-</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Aerospace & Precision</h3>
+          <p>Handling CNCs, grinders, and metrology equipment with clean placement and controlled movement.</p>
+          <ul class="list">
+            <li>CNCs, grinders, inspection equipment</li>
+            <li>Clean handling and placement</li>
+          </ul>
+        </div>
 
-<div class="card">
-<h3>Plant Relocations</h3>
-<ul>
-<li>Shutdown support</li>
-<li>Sequenced line moves</li>
-<li>Coordination with trades</li>
-</ul>
-</div>
+        <div class="card">
+          <h3>Fabrication</h3>
+          <p>Shop equipment moves with layout awareness and safe machine positioning.</p>
+          <ul class="list">
+            <li>Press brakes, lasers, shear lines</li>
+            <li>Anchoring and layout support</li>
+          </ul>
+        </div>
 
-</div>
-</section>
+        <div class="card">
+          <h3>Industrial / Utilities</h3>
+          <p>Equipment moves in operational facilities where access, safety, and protection matter.</p>
+          <ul class="list">
+            <li>Pumps, chillers, compressors</li>
+            <li>Shutdown coordination</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="industries" class="section">
+  <hr class="divider"/>
 
-<h2>Industries</h2>
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="wrap">
+      <h2>Process</h2>
+      <p class="sub">Simple, professional, and predictable — so you know exactly what’s happening before we move anything.</p>
 
-<div class="cards">
+      <div class="process">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Scope</h3>
+          <ul>
+            <li>Photos + dimensions + weights</li>
+            <li>Access, clearances, and site conditions</li>
+            <li>Confirm pick points and set location</li>
+          </ul>
+        </div>
 
-<div class="card">
-<h3>Aerospace & Precision</h3>
-<ul>
-<li>CNCs, grinders, metrology equipment</li>
-<li>Clean handling and placement</li>
-</ul>
-</div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Plan</h3>
+          <ul>
+            <li>Pick plan + equipment selection</li>
+            <li>Protection + route planning</li>
+            <li>Schedule coordination with your team</li>
+          </ul>
+        </div>
 
-<div class="card">
-<h3>Fabrication</h3>
-<ul>
-<li>Press brakes, lasers, shear lines</li>
-<li>Anchoring and layout</li>
-</ul>
-</div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Execute</h3>
+          <ul>
+            <li>Safe move + set + cleanup</li>
+            <li>Confirm placement and orientation</li>
+            <li>Clear communication through completion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>Industrial / Utilities</h3>
-<ul>
-<li>Pumps, chillers, compressors</li>
-<li>Shutdown coordination</li>
-</ul>
-</div>
+  <hr class="divider"/>
 
-</div>
-</section>
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
+    <div class="wrap">
+      <h2>Gallery</h2>
+      <p class="sub">A few recent projects. (Replace these images any time by swapping the files in your repo.)</p>
 
-<section id="process" class="section">
+      <div class="gallery">
+        <div class="shot"><img src="gallery1.jpg" alt="Rigging project 1" /></div>
+        <div class="shot"><img src="gallery2.jpg" alt="Rigging project 2" /></div>
+        <div class="shot"><img src="gallery3.jpg" alt="Rigging project 3" /></div>
+      </div>
+    </div>
+  </section>
 
-<h2>Process</h2>
+  <hr class="divider"/>
 
-<div class="cards">
+  <!-- FAQ -->
+  <section id="faq" class="section tight">
+    <div class="wrap">
+      <h2>FAQ</h2>
+      <p class="sub">Quick answers to the questions we get most often.</p>
 
-<div class="card">
-<h3>Scope</h3>
-<ul>
-<li>Photos + dimensions + weights</li>
-<li>Access and site conditions</li>
-</ul>
-</div>
+      <details>
+        <summary>What do you need from us to quote a move?</summary>
+        <p>Photos, approximate dimensions, estimated weight, access details (doors/ramps/floors), and the pickup/set locations. If you’re not sure, send what you have — we’ll help fill in the gaps.</p>
+      </details>
 
-<div class="card">
-<h3>Plan</h3>
-<ul>
-<li>Pick plan + equipment selection</li>
-<li>Protection + route planning</li>
-</ul>
-</div>
+      <details>
+        <summary>Do you handle in-plant moves and tight access?</summary>
+        <p>Yes. Tight access work is common — we plan for floor protection, clearance checks, controlled skidding/jacking, and precise placement.</p>
+      </details>
 
-<div class="card">
-<h3>Execute</h3>
-<ul>
-<li>Safe move + set + cleanup</li>
-<li>Confirm placement & alignment</li>
-</ul>
-</div>
+      <details>
+        <summary>Do you work statewide?</summary>
+        <p>Yes — we serve Washington. Scheduling depends on scope and travel, but we can typically get you on the calendar quickly.</p>
+      </details>
+    </div>
+  </section>
 
-</div>
-</section>
+  <hr class="divider"/>
 
-<section id="gallery" class="section">
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="sub">Tell us what you’re moving and where — we’ll respond quickly with next steps.</p>
 
-<h2>Gallery</h2>
+      <div class="contact">
+        <div class="contact-card">
+          <h3>Request a quote</h3>
+          <p>Email the job details and photos — we’ll take it from there.</p>
 
-<div class="gallery">
-<img src="gallery1.jpg">
-<img src="gallery2.jpg">
-<img src="gallery3.jpg">
-</div>
+          <div class="contact-actions">
+            <a class="btn" href="mailto:sales@titanriggersanderectors.com?subject=Quote%20Request%20-%20Titan%20Riggers%20%26%20Erectors">Email Sales</a>
+            <a class="btn ghost" href="tel:2063003466">Call 206-300-3466</a>
+          </div>
 
-</section>
+          <p class="muted">
+            Tip: Include machine make/model, weight (if known), pickup address/city, destination address/city, and access notes.
+          </p>
+        </div>
 
-<section id="contact" class="section">
+        <div class="contact-card">
+          <h3>Business info</h3>
+          <p><strong>Email:</strong> sales@titanriggersanderectors.com</p>
+          <p><strong>Phone:</strong> 206-300-3466</p>
+          <p style="margin-top:10px; color: var(--muted);">
+            Titan Riggers & Erectors • Serving Washington
+          </p>
 
-<h2>Contact</h2>
+          <div class="contact-actions" style="margin-top:16px;">
+            <a class="pill" href="#services"><span class="dot"></span> View Services</a>
+            <a class="pill" href="#gallery"><span class="dot"></span> View Gallery</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>Email: sales@titanriggersanderectors.com</p>
-<p>Phone: 206-300-3466</p>
+  <footer>
+    Titan Riggers & Erectors • Serving Washington
+  </footer>
 
-</section>
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
 
-<footer>
+    btn.addEventListener('click', () => {
+      const isOpen = menu.style.display === 'block';
+      menu.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? 'Menu' : 'Close';
+    });
 
-Titan Riggers & Erectors • Serving Washington
-
-</footer>
-
+    // Close mobile menu after clicking a link
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.style.display = 'none';
+        btn.textContent = 'Menu';
+      });
+    });
+  </script>
 </body>
 </html>
