@@ -230,32 +230,7 @@
   position:relative;
   overflow:hidden;
   padding:82px 0 26px 0;
-}
-
-/* slow drifting Titan background (PARALLAX DRIFT) */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:-20%;
-  background-image:url("titan-bg1.png");
-  background-repeat:no-repeat;
-  background-size:contain;
-
-  /* start position (top-left-ish) */
-  background-position: 40% 45%;
-
-  opacity:.20;
-  z-index:0;
-  pointer-events:none;
-
-  /* drift */
-  animation: heroDrift 8s ease-in-out infinite alternate;
-}
-
-/* make it clearly move */
-@keyframes heroDrift{
-  from { background-position: 40% 45%; }
-  to   { background-position: 60% 55%; }
+ 
 }
 
 .hero > *{
