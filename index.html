@@ -488,7 +488,15 @@
     @media (max-width: 520px){
       .gallery-grid{ grid-template-columns: 1fr; }
       .thumb img{ height: 190px; }
-    }
+    /* FORCE REMOVE the little letter/number boxes */
+.svc .icon,
+.svc [class*="icon"],
+.svc [class*="badge"],
+.svc [class*="chip"],
+.svc > div:first-child {
+  display: none !important;
+}
+
   </style>
 </head>
 
