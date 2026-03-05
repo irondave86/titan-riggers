@@ -231,8 +231,6 @@
   overflow:hidden;
   padding:82px 0 26px 0;
  
-}
-/* Static Titan hero background */
 .hero::before{
   content:"";
   position:absolute;
@@ -244,7 +242,8 @@
   opacity:.18;
   z-index:0;
   pointer-events:none;
-  transform:scale(1.05);
+}
+
 }.hero > *{
   position:relative;
   z-index:1;
@@ -261,14 +260,7 @@
     opacity:1;
     transform:translateY(0);
   }
-}
-
-@keyframes heroDrift{
-  from{ transform:translate(-2%, -2%) scale(1.15); }
-  to{ transform:translate(2%, 2%) scale(1.15); }
-}
-}
-}    .hero-grid{
+    .hero-grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
       gap:26px;
