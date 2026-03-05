@@ -228,25 +228,10 @@
     .hero{
       padding:82px 0 26px 0;
     }
-    .hero h1{
+  .hero-grid{
   opacity:0;
-  transform:translateY(80px);
-  animation:heroFade 1s ease forwards;
-  animation-delay:.2s;
-}
-
-.hero p{
-  opacity:0;
-  transform:translateY(20px);
-  animation:heroFade 1s ease forwards;
-  animation-delay:.4s;
-}
-
-.hero .cta{
-  opacity:0;
-  transform:translateY(20px);
-  animation:heroFade 1s ease forwards;
-  animation-delay:.6s;
+  transform:translateY(60px);
+  animation:heroFade 1.2s ease forwards;
 }
 
 @keyframes heroFade{
@@ -254,6 +239,7 @@
     opacity:1;
     transform:translateY(0);
   }
+}
 }    .hero-grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
