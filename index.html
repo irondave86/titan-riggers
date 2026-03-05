@@ -42,11 +42,16 @@
        - Always shows a faint built-in watermark (SVG)
        - If titan-bg.png exists, it overlays on top
     */
-    .bg-logo{
-      position:fixed;
-      inset:0;
-      z-index:-5;
-      pointer-events:none;
+   .bg-logo{
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+
+  background: url("/titan-background.png") center no-repeat;
+  background-size: 700px;   /* size of the logo */
+  opacity: .06;             /* how faint it is */
+}
     }
     .bg-logo::before{
       content:"";
