@@ -1,631 +1,809 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Titan Riggers & Erectors | Rigging & Machinery Moving</title>
-<meta name="description" content="Titan Riggers & Erectors — safe, precise machinery moves. Rigging, machinery moving, and plant relocations across Washington." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Titan Riggers & Erectors | Rigging & Machinery Moving</title>
+  <meta name="description" content="Titan Riggers & Erectors — safe, precise machinery moves. Rigging, machinery moving, and plant relocations across the Pacific Northwest." />
 
-<style>
-  :root{
-    --bg: #0b0f14;
-    --panel: rgba(18, 26, 34, 0.72);
-    --panel-2: rgba(18, 26, 34, 0.55);
-    --text: rgba(255,255,255,0.92);
-    --muted: rgba(255,255,255,0.70);
-    --line: rgba(255,255,255,0.10);
-    --brand: #f4a633;  /* warm amber */
-    --brand2: #ffd089;  /* lighter amber */
-    --shadow: 0 18px 60px rgba(0,0,0,0.45);
-    --radius: 18px;
-    --radius2: 12px;
-    --max: 1120px;
-  }
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: rgba(18, 26, 34, 0.72);
+      --panel-2: rgba(18, 26, 34, 0.55);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --line: rgba(255,255,255,0.10);
+      --brand: #f4a633;
+      --brand2: #ffd089;
+      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --radius2: 12px;
+      --max: 1120px;
+    }
 
-  *{ box-sizing: border-box; }
-  html,body{ height:100%; }
-  body{
-    margin:0;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
-    color: var(--text);
-    background: var(--bg);
-  }
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
 
-  /* Background branding image + dark overlay */
-  .bg{
-    position: fixed;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(0,0,0,0.80), rgba(0,0,0,0.55)),
-      url("titan-bg.PNG");
-    background-size: cover;
-    background-position: center;
-    filter: saturate(1.1) contrast(1.05);
-    z-index:-2;
-  }
-  .grain{
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
-    opacity: .25;
-    z-index:-1;
-    pointer-events:none;
-  }
+    .bg{
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,0.80), rgba(0,0,0,0.55)),
+        url("titan-bg.PNG");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.1) contrast(1.05);
+      z-index:-2;
+    }
+    .grain{
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity: .25;
+      z-index:-1;
+      pointer-events:none;
+    }
 
-  .wrap{
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 22px 18px 70px;
-  }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px 70px;
+    }
 
-  /* NAV */
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    padding: 14px 14px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: linear-gradient(180deg, rgba(18,26,34,.78), rgba(18,26,34,.55));
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(10px);
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    min-width: 240px;
-  }
-  .brand img{
-    height: 38px;
-    width: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.35);
-  }
-  .brand .name{
-    line-height: 1.05;
-    font-weight: 800;
-    letter-spacing: .2px;
-  }
-  .brand .sub{
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 3px;
-  }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(18,26,34,.78), rgba(18,26,34,.55));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 240px;
+    }
+    .brand img{
+      height: 38px;
+      width: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    .brand .name{
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .brand .sub{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
 
-  .nav-links{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-  .nav a{
-    color: var(--muted);
-    text-decoration:none;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 8px 10px;
-    border-radius: 10px;
-    transition: 120ms ease;
-  }
-  .nav a:hover{
-    color: var(--text);
-    background: rgba(255,255,255,0.06);
-  }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .nav a{
+      color: var(--muted);
+      text-decoration:none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: 120ms ease;
+    }
+    .nav a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
 
-  .nav-cta{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    justify-content:flex-end;
-    min-width: 280px;
-  }
-  .pill{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding: 9px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: rgba(0,0,0,0.18);
-    color: var(--text);
-    font-weight: 700;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(244,166,51,.35);
-    background: linear-gradient(180deg, var(--brand2), var(--brand));
-    color: #1b1206;
-    font-weight: 900;
-    text-decoration:none;
-    box-shadow: 0 18px 40px rgba(244,166,51,0.18);
-    white-space: nowrap;
-  }
-  .btn:hover{ filter: brightness(1.03); transform: translateY(-1px); }
+    .nav-cta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      min-width: 280px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.18);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(244,166,51,.35);
+      background: linear-gradient(180deg, var(--brand2), var(--brand));
+      color: #1b1206;
+      font-weight: 900;
+      text-decoration:none;
+      box-shadow: 0 18px 40px rgba(244,166,51,0.18);
+      white-space: nowrap;
+    }
+    .btn:hover{ filter: brightness(1.03); transform: translateY(-1px); }
+    .btn2{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-weight: 800;
+      text-decoration:none;
+    }
+    .btn2:hover{ background: rgba(255,255,255,0.09); }
 
-  /* HERO */
-  .hero{
-    margin-top: 18px;
-    display:grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 18px;
-    align-items: stretch;
-  }
-  .card{
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--panel);
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(10px);
-    overflow:hidden;
-  }
-  .hero-left{
-    padding: 22px;
-  }
-  .kicker{
-    display:inline-flex;
-    gap:8px;
-    align-items:center;
-    font-weight: 800;
-    font-size: 12px;
-    color: rgba(255,255,255,.82);
-    padding: 6px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(0,0,0,.18);
-  }
-  h1{
-    margin: 14px 0 10px;
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.6px;
-  }
-  .lead{
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-    max-width: 62ch;
-  }
-  .hero-actions{
-    margin-top: 14px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    align-items:center;
-  }
-  .btn2{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding: 10px 14px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,0.06);
-    color: var(--text);
-    font-weight: 800;
-    text-decoration:none;
-  }
-  .btn2:hover{ background: rgba(255,255,255,0.09); }
+    .hero{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .hero-left{ padding: 22px; }
+    .kicker{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-weight: 800;
+      font-size: 12px;
+      color: rgba(255,255,255,.82);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+    }
+    .pnw{
+      margin-top: 10px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(244,166,51,.22);
+      background: rgba(244,166,51,.10);
+      color: rgba(255,255,255,.90);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .pnw small{
+      font-weight: 700;
+      color: rgba(255,255,255,.70);
+    }
 
-  .badges{
-    margin-top: 14px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    color: rgba(255,255,255,.82);
-    font-weight: 700;
-    font-size: 12px;
-  }
-  .badge{
-    display:inline-flex;
-    gap:8px;
-    align-items:center;
-    padding: 8px 10px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(0,0,0,.18);
-    border-radius: 999px;
-  }
-  .dot{
-    width:8px;height:8px;border-radius:50%;
-    background: var(--brand);
-    box-shadow: 0 0 0 3px rgba(244,166,51,.18);
-  }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+    }
+    .lead{
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 62ch;
+    }
+    .hero-actions{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .badges{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color: rgba(255,255,255,.82);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      border-radius: 999px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: var(--brand);
+      box-shadow: 0 0 0 3px rgba(244,166,51,.18);
+    }
 
-  /* Right panel */
-  .hero-right{
-    padding: 18px;
-    background: linear-gradient(180deg, rgba(18,26,34,.75), rgba(18,26,34,.55));
-  }
-  .panel-title{
-    font-weight: 900;
-    margin: 2px 0 10px;
-    font-size: 14px;
-    color: rgba(255,255,255,.88);
-  }
-  .grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 8px;
-  }
-  .mini{
-    border: 1px solid rgba(255,255,255,.10);
-    border-radius: 14px;
-    padding: 12px;
-    background: rgba(0,0,0,.18);
-  }
-  .mini b{
-    display:block;
-    font-size: 13px;
-    margin-bottom: 4px;
-  }
-  .mini span{
-    font-size: 12px;
-    color: var(--muted);
-  }
+    .hero-right{
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(18,26,34,.75), rgba(18,26,34,.55));
+    }
+    .panel-title{
+      font-weight: 900;
+      margin: 2px 0 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,.88);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .mini{
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(0,0,0,.18);
+    }
+    .mini b{ display:block; font-size: 13px; margin-bottom: 4px; }
+    .mini span{ font-size: 12px; color: var(--muted); }
 
-  .small-cta{
-    margin-top: 12px;
-    padding: 12px;
-    border: 1px solid rgba(255,255,255,.10);
-    border-radius: 14px;
-    background: rgba(0,0,0,.18);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-  }
-  .small-cta p{
-    margin:0;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.4;
-  }
-  .small-cta a{ padding: 10px 12px; font-size: 13px; }
+    .small-cta{
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .small-cta p{
+      margin:0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .small-cta a{ padding: 10px 12px; font-size: 13px; }
 
-  /* Sections */
-  .section{
-    margin-top: 18px;
-    padding: 18px;
-  }
-  .section-head{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:12px;
-    margin-bottom: 12px;
-  }
-  .section h2{
-    margin:0;
-    font-size: 22px;
-    letter-spacing: -.3px;
-  }
-  .section p{
-    margin:0;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.55;
-    max-width: 75ch;
-  }
+    .section{
+      margin-top: 18px;
+      padding: 18px;
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 12px;
+    }
+    .section h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -.3px;
+    }
+    .section p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 75ch;
+    }
 
-  .services{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 12px;
-  }
-  .svc{
-    padding: 14px;
-    border: 1px solid rgba(255,255,255,.10);
-    border-radius: 16px;
-    background: rgba(0,0,0,.18);
-    min-height: 140px;
-  }
-  .svc .icon{
-    width: 42px; height: 42px;
-    border-radius: 14px;
-    display:flex; align-items:center; justify-content:center;
-    background: rgba(244,166,51,.14);
-    border: 1px solid rgba(244,166,51,.22);
-    margin-bottom: 10px;
-    font-weight: 900;
-  }
-  .svc h3{
-    margin:0 0 6px;
-    font-size: 16px;
-  }
-  .svc ul{
-    margin:0;
-    padding-left: 16px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.55;
-  }
+    .services{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .svc{
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+      min-height: 140px;
+    }
+    .svc .icon{
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(244,166,51,.14);
+      border: 1px solid rgba(244,166,51,.22);
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+    .svc h3{ margin:0 0 6px; font-size: 16px; }
+    .svc ul{
+      margin:0;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
 
-  /* Contact */
-  .contact{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 12px;
-  }
-  .contact .box{
-    padding: 14px;
-    border: 1px solid rgba(255,255,255,.10);
-    border-radius: 16px;
-    background: rgba(0,0,0,.18);
-  }
-  .contact .box b{ display:block; margin-bottom: 6px; }
-  .contact a{ color: var(--brand2); font-weight: 900; text-decoration:none; }
-  .contact a:hover{ text-decoration: underline; }
+    /* GALLERY */
+    .gallery-grid{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .thumb{
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      overflow:hidden;
+      background: rgba(0,0,0,.20);
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+    .thumb img{
+      width:100%;
+      height: 150px;
+      object-fit: cover;
+      display:block;
+      transition: 160ms ease;
+    }
+    .thumb:hover img{ transform: scale(1.03); }
+    .cap{
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.90);
+      font-size: 12px;
+      font-weight: 800;
+      backdrop-filter: blur(6px);
+    }
 
-  footer{
-    margin-top: 18px;
-    padding: 12px 4px 0;
-    color: rgba(255,255,255,.55);
-    font-size: 12px;
-    text-align:center;
-  }
+    /* Lightbox */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.75);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 50;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-card{
+      max-width: 1100px;
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(15,20,28,.88);
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      overflow:hidden;
+    }
+    .lightbox-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .lightbox-title{
+      font-weight: 900;
+      font-size: 13px;
+      color: rgba(255,255,255,.90);
+    }
+    .close{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.90);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      cursor:pointer;
+    }
+    .close:hover{ background: rgba(255,255,255,.09); }
 
-  /* Responsive */
-  @media (max-width: 980px){
-    .hero{ grid-template-columns: 1fr; }
-    .nav{ flex-direction: column; align-items: stretch; }
-    .brand, .nav-cta{ min-width: auto; justify-content: center; }
-    .nav-links{ justify-content: center; }
-    .services{ grid-template-columns: 1fr; }
-    .contact{ grid-template-columns: 1fr; }
-  }
-</style>
+    .lightbox-img{
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      display:block;
+      background: rgba(0,0,0,.25);
+    }
+    .lightbox-caption{
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .contact .box{
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+    }
+    .contact .box b{ display:block; margin-bottom: 6px; }
+    .contact a{ color: var(--brand2); font-weight: 900; text-decoration:none; }
+    .contact a:hover{ text-decoration: underline; }
+
+    footer{
+      margin-top: 18px;
+      padding: 12px 4px 0;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      text-align:center;
+    }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .nav{ flex-direction: column; align-items: stretch; }
+      .brand, .nav-cta{ min-width: auto; justify-content: center; }
+      .nav-links{ justify-content: center; }
+      .services{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+      .thumb img{ height: 160px; }
+    }
+    @media (max-width: 520px){
+      .gallery-grid{ grid-template-columns: 1fr; }
+      .thumb img{ height: 190px; }
+    }
+  </style>
 </head>
 
 <body>
-<div class="bg"></div>
-<div class="grain"></div>
+  <div class="bg"></div>
+  <div class="grain"></div>
 
-<div class="wrap">
-  <!-- NAV -->
-  <header class="nav">
-    <div class="brand">
-      <!-- Uses your uploaded logo file -->
-      <img src="titan-nav.png" alt="Titan Riggers & Erectors logo" />
-      <div>
-        <div class="name">Titan Riggers &amp; Erectors</div>
-        <div class="sub">Rigging • Machinery Moving • Plant Relocation</div>
-      </div>
-    </div>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
-      <a href="#process">Process</a>
-      <a href="#why">Why Titan</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="nav-cta">
-      <div class="pill">Call 206 300-3466</div>
-      <a class="btn" href="#contact">Request a Quote</a>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="card hero-left">
-      <div class="kicker"><span class="dot"></span> Washington heavy equipment moves</div>
-      <h1>Safe, precise machinery moves—done right the first time.</h1>
-      <p class="lead">
-        Titan Riggers &amp; Erectors handles heavy equipment moving, setting, and installation for industrial and commercial facilities.
-        We plan every pick, protect your uptime, and execute with care.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn" href="#contact">Get a Fast Quote</a>
-        <a class="btn2" href="#services">See Services</a>
-        <a class="btn2" href="mailto:quotes@titanriggersanderectors.com">Email Quotes</a>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">
+        <img src="titan-nav.png" alt="Titan Riggers & Erectors logo" />
+        <div>
+          <div class="name">Titan Riggers &amp; Erectors</div>
+          <div class="sub">Rigging • Machinery Moving • Plant Relocation</div>
+        </div>
       </div>
 
-      <div class="badges">
-        <div class="badge"><span class="dot"></span> Safety-first planning</div>
-        <div class="badge"><span class="dot"></span> Insured &amp; jobsite-ready</div>
-        <div class="badge"><span class="dot"></span> Tight access specialists</div>
-        <div class="badge"><span class="dot"></span> On-time, on-budget</div>
-      </div>
-    </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#process">Process</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <aside class="card hero-right">
-      <div class="panel-title">What we move</div>
-      <div class="grid">
-        <div class="mini"><b>CNCs &amp; machine tools</b><span>mills • lathes • machining centers</span></div>
-        <div class="mini"><b>Presses &amp; fabrication</b><span>brake presses • shear lines</span></div>
-        <div class="mini"><b>Industrial equipment</b><span>compressors • chillers • pumps</span></div>
-        <div class="mini"><b>Forklifts &amp; skids</b><span>crates • skids • line moves</span></div>
+      <div class="nav-cta">
+        <div class="pill">Call 206 300-3466</div>
+        <a class="btn" href="#contact">Request a Quote</a>
       </div>
+    </header>
 
-      <div class="small-cta">
-        <p><b style="color:rgba(255,255,255,.9)">Need service this week?</b><br/>
-          Tell us the site + equipment weight and we’ll respond fast.
+    <section class="hero">
+      <div class="card hero-left">
+        <div class="kicker"><span class="dot"></span> Washington heavy equipment moves</div>
+
+        <div class="pnw">
+          Serving the <span style="color:var(--brand2)">Pacific Northwest</span>
+          <small>• WA • OR • ID (and beyond)</small>
+        </div>
+
+        <h1>Safe, precise machinery moves—done right the first time.</h1>
+        <p class="lead">
+          Titan Riggers &amp; Erectors handles heavy equipment moving, setting, and installation for industrial and commercial facilities.
+          We plan every pick, protect your uptime, and execute with care.
         </p>
-        <a class="btn" href="#contact">Start</a>
-      </div>
-    </aside>
-  </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="card section">
-    <div class="section-head">
-      <div>
-        <h2>Services</h2>
-        <p>From single-machine moves to full plant relocations—planned, permitted, and executed safely.</p>
-      </div>
-    </div>
-
-    <div class="services">
-      <div class="svc">
-        <div class="icon">R</div>
-        <h3>Rigging &amp; Setting</h3>
-        <ul>
-          <li>Pick plans &amp; lift execution</li>
-          <li>Machine setting &amp; alignment</li>
-          <li>Confined access moves</li>
-        </ul>
-      </div>
-
-      <div class="svc">
-        <div class="icon">M</div>
-        <h3>Machinery Moving</h3>
-        <ul>
-          <li>In-plant and cross-town moves</li>
-          <li>Skidding, jacking, and rolling</li>
-          <li>Crating &amp; protection</li>
-        </ul>
-      </div>
-
-      <div class="svc">
-        <div class="icon">P</div>
-        <h3>Plant Relocations</h3>
-        <ul>
-          <li>Shutdown support</li>
-          <li>Sequenced line moves</li>
-          <li>Coordination with trades</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRIES -->
-  <section id="industries" class="card section">
-    <div class="section-head">
-      <div>
-        <h2>Industries</h2>
-        <p>Manufacturing, aerospace, industrial services, and commercial facilities across Washington.</p>
-      </div>
-    </div>
-    <div class="services">
-      <div class="svc">
-        <div class="icon">A</div>
-        <h3>Aerospace &amp; Precision</h3>
-        <ul><li>CNCs, grinders, metrology equipment</li><li>Clean handling and placement</li></ul>
-      </div>
-      <div class="svc">
-        <div class="icon">F</div>
-        <h3>Fabrication</h3>
-        <ul><li>Press brakes, lasers, shear lines</li><li>Anchoring and layout</li></ul>
-      </div>
-      <div class="svc">
-        <div class="icon">I</div>
-        <h3>Industrial / Utilities</h3>
-        <ul><li>Pumps, chillers, compressors</li><li>Shutdown coordination</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process" class="card section">
-    <div class="section-head">
-      <div>
-        <h2>Process</h2>
-        <p>Fast, organized, and safe—so your equipment is down for the shortest time possible.</p>
-      </div>
-    </div>
-    <div class="services">
-      <div class="svc">
-        <div class="icon">1</div>
-        <h3>Scope</h3>
-        <ul><li>Photos + dimensions + weights</li><li>Access and site conditions</li></ul>
-      </div>
-      <div class="svc">
-        <div class="icon">2</div>
-        <h3>Plan</h3>
-        <ul><li>Pick plan + equipment selection</li><li>Protection + route planning</li></ul>
-      </div>
-      <div class="svc">
-        <div class="icon">3</div>
-        <h3>Execute</h3>
-        <ul><li>Safe move + set + cleanup</li><li>Confirm placement &amp; alignment</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
-  <section id="why" class="card section">
-    <div class="section-head">
-      <div>
-        <h2>Why Titan</h2>
-        <p>We treat your machinery like it’s our own—planned moves, clean execution, and clear communication.</p>
-      </div>
-    </div>
-
-    <div class="contact">
-      <div class="box">
-        <b>Safety &amp; precision</b>
-        <div style="color:var(--muted);font-size:13px;line-height:1.55;">
-          Pre-planned moves, proper rigging, and jobsite-ready execution focused on protecting your equipment and your facility.
+        <div class="hero-actions">
+          <a class="btn" href="#contact">Get a Fast Quote</a>
+          <a class="btn2" href="#services">See Services</a>
+          <a class="btn2" href="mailto:quotes@titanriggersanderectors.com">Email Quotes</a>
         </div>
-      </div>
-      <div class="box">
-        <b>Reliable scheduling</b>
-        <div style="color:var(--muted);font-size:13px;line-height:1.55;">
-          We show up ready, communicate clearly, and keep downtime minimal with an efficient plan.
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="card section">
-    <div class="section-head">
-      <div>
-        <h2>Contact</h2>
-        <p>Send us the jobsite, equipment details, and your timeline. We’ll respond quickly.</p>
-      </div>
-    </div>
-
-    <div class="contact">
-      <div class="box">
-        <b>Call</b>
-        <div><a href="tel:+12063003466">206 300-3466</a></div>
-        <div style="height:10px"></div>
-        <b>Email</b>
-        <div><a href="mailto:quotes@titanriggersanderectors.com">quotes@titanriggersanderectors.com</a></div>
-        <div style="color:var(--muted);font-size:12px;margin-top:6px;">
-          (If your domain email isn’t set up yet, this link may not work — we’ll fix that next.)
+        <div class="badges">
+          <div class="badge"><span class="dot"></span> Safety-first planning</div>
+          <div class="badge"><span class="dot"></span> Insured &amp; jobsite-ready</div>
+          <div class="badge"><span class="dot"></span> Tight access specialists</div>
+          <div class="badge"><span class="dot"></span> On-time, on-budget</div>
         </div>
       </div>
 
-      <div class="box">
-        <b>Quick quote checklist</b>
-        <div style="color:var(--muted);font-size:13px;line-height:1.6;">
-          • Pickup + delivery address<br/>
-          • Equipment make/model<br/>
-          • Weight + dimensions (if known)<br/>
-          • Photos of access/doorways<br/>
-          • Required date/time window
+      <aside class="card hero-right">
+        <div class="panel-title">What we move</div>
+        <div class="grid">
+          <div class="mini"><b>CNCs &amp; machine tools</b><span>mills • lathes • machining centers</span></div>
+          <div class="mini"><b>Presses &amp; fabrication</b><span>brake presses • shear lines</span></div>
+          <div class="mini"><b>Industrial equipment</b><span>compressors • chillers • pumps</span></div>
+          <div class="mini"><b>Forklifts &amp; skids</b><span>crates • skids • line moves</span></div>
         </div>
-        <div style="height:12px"></div>
-        <a class="btn" href="mailto:quotes@titanriggersanderectors.com?subject=Request%20a%20Quote%20-%20Titan%20Riggers%20%26%20Erectors">Email for Quote</a>
+
+        <div class="small-cta">
+          <p><b style="color:rgba(255,255,255,.9)">Need service this week?</b><br/>
+            Tell us the site + equipment weight and we’ll respond fast.
+          </p>
+          <a class="btn" href="#contact">Start</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services" class="card section">
+      <div class="section-head">
+        <div>
+          <h2>Services</h2>
+          <p>From single-machine moves to full plant relocations—planned, permitted, and executed safely.</p>
+        </div>
       </div>
+
+      <div class="services">
+        <div class="svc">
+          <div class="icon">R</div>
+          <h3>Rigging &amp; Setting</h3>
+          <ul>
+            <li>Pick plans &amp; lift execution</li>
+            <li>Machine setting &amp; alignment</li>
+            <li>Confined access moves</li>
+          </ul>
+        </div>
+
+        <div class="svc">
+          <div class="icon">M</div>
+          <h3>Machinery Moving</h3>
+          <ul>
+            <li>In-plant and cross-town moves</li>
+            <li>Skidding, jacking, and rolling</li>
+            <li>Crating &amp; protection</li>
+          </ul>
+        </div>
+
+        <div class="svc">
+          <div class="icon">P</div>
+          <h3>Plant Relocations</h3>
+          <ul>
+            <li>Shutdown support</li>
+            <li>Sequenced line moves</li>
+            <li>Coordination with trades</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="industries" class="card section">
+      <div class="section-head">
+        <div>
+          <h2>Industries</h2>
+          <p>Manufacturing, aerospace, industrial services, and commercial facilities across the Pacific Northwest.</p>
+        </div>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <div class="icon">A</div>
+          <h3>Aerospace &amp; Precision</h3>
+          <ul><li>CNCs, grinders, metrology equipment</li><li>Clean handling and placement</li></ul>
+        </div>
+        <div class="svc">
+          <div class="icon">F</div>
+          <h3>Fabrication</h3>
+          <ul><li>Press brakes, lasers, shear lines</li><li>Anchoring and layout</li></ul>
+        </div>
+        <div class="svc">
+          <div class="icon">I</div>
+          <h3>Industrial / Utilities</h3>
+          <ul><li>Pumps, chillers, compressors</li><li>Shutdown coordination</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="card section">
+      <div class="section-head">
+        <div>
+          <h2>Process</h2>
+          <p>Fast, organized, and safe—so your equipment is down for the shortest time possible.</p>
+        </div>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <div class="icon">1</div>
+          <h3>Scope</h3>
+          <ul><li>Photos + dimensions + weights</li><li>Access and site conditions</li></ul>
+        </div>
+        <div class="svc">
+          <div class="icon">2</div>
+          <h3>Plan</h3>
+          <ul><li>Pick plan + equipment selection</li><li>Protection + route planning</li></ul>
+        </div>
+        <div class="svc">
+          <div class="icon">3</div>
+          <h3>Execute</h3>
+          <ul><li>Safe move + set + cleanup</li><li>Confirm placement &amp; alignment</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="card section">
+      <div class="section-head">
+        <div>
+          <h2>Gallery</h2>
+          <p>Recent moves and jobsite work. Click any photo to enlarge.</p>
+        </div>
+      </div>
+
+      <!-- Replace these filenames with your uploaded images in /gallery -->
+      <div class="gallery-grid">
+        <div class="thumb" data-src="gallery/01.jpg" data-cap="Rigging & setting">
+          <img src="gallery/01.jpg" alt="Gallery photo 1">
+          <div class="cap">Rigging &amp; setting</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/02.jpg" data-cap="Machinery moving">
+          <img src="gallery/02.jpg" alt="Gallery photo 2">
+          <div class="cap">Machinery moving</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/03.jpg" data-cap="Plant relocation support">
+          <img src="gallery/03.jpg" alt="Gallery photo 3">
+          <div class="cap">Plant relocation support</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/04.jpg" data-cap="Forklift / skidding work">
+          <img src="gallery/04.jpg" alt="Gallery photo 4">
+          <div class="cap">Forklift / skidding</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/05.jpg" data-cap="Precision placement">
+          <img src="gallery/05.jpg" alt="Gallery photo 5">
+          <div class="cap">Precision placement</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/06.jpg" data-cap="Heavy equipment move">
+          <img src="gallery/06.jpg" alt="Gallery photo 6">
+          <div class="cap">Heavy equipment move</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/07.jpg" data-cap="Tight access specialists">
+          <img src="gallery/07.jpg" alt="Gallery photo 7">
+          <div class="cap">Tight access</div>
+        </div>
+
+        <div class="thumb" data-src="gallery/08.jpg" data-cap="Jobsite-ready execution">
+          <img src="gallery/08.jpg" alt="Gallery photo 8">
+          <div class="cap">Jobsite-ready</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;color:var(--muted);font-size:12px;line-height:1.5;">
+        Tip: If you only have 4 photos right now, delete the extra “thumb” blocks above (or upload more later).
+      </div>
+    </section>
+
+    <section id="contact" class="card section">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Send us the jobsite, equipment details, and your timeline. We’ll respond quickly.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="box">
+          <b>Call</b>
+          <div><a href="tel:+12063003466">206 300-3466</a></div>
+          <div style="height:10px"></div>
+          <b>Email</b>
+          <div><a href="mailto:quotes@titanriggersanderectors.com">quotes@titanriggersanderectors.com</a></div>
+          <div style="color:var(--muted);font-size:12px;margin-top:6px;">
+            (Once your domain email is live, change this to: sales@titanriggersanderectors.com)
+          </div>
+        </div>
+
+        <div class="box">
+          <b>Quick quote checklist</b>
+          <div style="color:var(--muted);font-size:13px;line-height:1.6;">
+            • Pickup + delivery address<br/>
+            • Equipment make/model<br/>
+            • Weight + dimensions (if known)<br/>
+            • Photos of access/doorways<br/>
+            • Required date/time window
+          </div>
+          <div style="height:12px"></div>
+          <a class="btn" href="mailto:quotes@titanriggersanderectors.com?subject=Request%20a%20Quote%20-%20Titan%20Riggers%20%26%20Erectors">Email for Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Titan Riggers &amp; Erectors • Serving the Pacific Northwest
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <div class="lightbox-top">
+        <div class="lightbox-title" id="lbTitle">Gallery</div>
+        <button class="close" id="lbClose" type="button">Close</button>
+      </div>
+      <img class="lightbox-img" id="lbImg" alt="Enlarged gallery image" />
+      <div class="lightbox-caption" id="lbCap"></div>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © <span id="year"></span> Titan Riggers &amp; Erectors • Washington
-  </footer>
-</div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbCap = document.getElementById("lbCap");
+    const lbTitle = document.getElementById("lbTitle");
+    const lbClose = document.getElementById("lbClose");
+
+    function openLightbox(src, cap){
+      lbImg.src = src;
+      lbCap.textContent = cap || "";
+      lbTitle.textContent = "Gallery";
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden","false");
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden","true");
+      lbImg.src = "";
+    }
+
+    document.querySelectorAll(".thumb").forEach(t => {
+      t.addEventListener("click", () => openLightbox(t.dataset.src, t.dataset.cap));
+    });
+
+    lbClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if(e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeLightbox();
+    });
+  </script>
 </body>
 </html>
-
