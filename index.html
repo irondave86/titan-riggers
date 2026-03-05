@@ -4,24 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Primary SEO -->
   <title>Titan Riggers & Erectors | Rigging & Machinery Moving | Pacific Northwest</title>
   <meta name="description" content="Titan Riggers & Erectors provides safe, precise rigging, machinery moving, and plant relocations across the Pacific Northwest. Request a quote today." />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0b1017" />
 
-  <!-- Canonical (update if you prefer www.) -->
   <link rel="canonical" href="https://titanriggersanderectors.com/" />
 
-  <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Titan Riggers & Erectors | Rigging & Machinery Moving" />
   <meta property="og:description" content="Safe, precise machinery moves—done right the first time. Serving the Pacific Northwest." />
   <meta property="og:url" content="https://titanriggersanderectors.com/" />
-  <!-- Use your logo image for sharing if you want -->
   <meta property="og:image" content="https://titanriggersanderectors.com/titan-nav.png" />
 
-  <!-- LocalBusiness Schema (helps Google understand what you do) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -36,23 +31,19 @@
     ],
     "description":"Rigging, machinery moving, setting, and plant relocations across the Pacific Northwest.",
     "telephone":"+1-206-300-3466",
-    "email":"sales@titanriggersanderectors.com",
-    "sameAs":[
-      "https://www.facebook.com/"
-    ]
+    "email":"sales@titanriggersanderectors.com"
   }
   </script>
 
   <style>
     :root{
       --bg:#070b10;
-      --panel: rgba(10,14,20,.32); /* more transparent */
-      --panel2: rgba(10,14,20,.22); /* even more transparent */
+      --panel: rgba(10,14,20,.32);
+      --panel2: rgba(10,14,20,.22);
       --border: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
-      --brand: #f4a633; /* Titan gold */
-      --glow: rgba(244,166,51,.35);
+      --brand: #f4a633;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 16px;
       --max: 1140px;
@@ -62,26 +53,27 @@
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
       background: radial-gradient(1200px 900px at 20% 0%, #101a28 0%, var(--bg) 55%, #05070b 100%);
       overflow-x:hidden;
     }
 
-    /* Background logo/image layer */
+    /* Smaller repeating background watermark */
     body:before{
       content:"";
       position:fixed;
-      inset:-10%;
-      background:
-        url("titan-bg.PNG") center/cover no-repeat;
-      opacity:.34;                /* increase logo visibility */
+      inset:0;
+      background-image: url("titan-bg.PNG");
+      background-repeat: repeat;
+      background-position: center;
+      background-size: 780px auto;   /* <-- smaller logo watermark size */
+      opacity:.26;                  /* still visible but not overpowering */
       filter: contrast(1.05) saturate(1.05);
-      transform: scale(1.05);
       z-index:-2;
     }
 
-    /* Subtle dark wash (keeps text readable while still seeing logo) */
+    /* Dark wash */
     body:after{
       content:"";
       position:fixed;
@@ -97,9 +89,7 @@
 
     /* NAV */
     .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(12px);
       background: rgba(8,10,14,.55);
       border-bottom: 1px solid rgba(255,255,255,.08);
@@ -112,51 +102,31 @@
       align-items:center;
       justify-content:space-between;
       gap:14px;
+      flex-wrap:wrap;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width: 220px;
+      display:flex; align-items:center; gap:10px;
     }
     .brand img{
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 10px;
       object-fit: cover;
       box-shadow: 0 10px 26px rgba(0,0,0,.45);
       border:1px solid rgba(255,255,255,.10);
     }
     .brand .name{
-      font-weight:800;
-      letter-spacing:.2px;
-      line-height:1.05;
+      font-weight:800; letter-spacing:.2px; line-height:1.05;
     }
-    .brand .name small{
-      display:block;
-      font-weight:650;
-      opacity:.85;
-      margin-top:2px;
-    }
+    .brand .name small{ display:block; font-weight:650; opacity:.85; margin-top:2px; }
 
     .navlinks{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:center;
-      font-weight:650;
-      color: rgba(255,255,255,.84);
+      display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+      font-weight:650; color: rgba(255,255,255,.84);
     }
-    .navlinks a{ opacity:.92; }
     .navlinks a:hover{ color:#fff; }
 
     .navcta{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      justify-content:flex-end;
-      min-width: 280px;
+      display:flex; align-items:center; gap:10px; justify-content:flex-end;
     }
     .pill{
       border:1px solid rgba(255,255,255,.12);
@@ -167,11 +137,9 @@
       font-size:14px;
       white-space:nowrap;
     }
+
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
+      display:inline-flex; align-items:center; justify-content:center;
       padding: 11px 14px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
@@ -184,7 +152,7 @@
     .btn:hover{
       transform: translateY(-1px);
       box-shadow: 0 14px 36px rgba(0,0,0,.35);
-      border-color: rgba(255,255,255,.18);
+      border-color: rgba(244,166,51,.18);
       background: rgba(0,0,0,.28);
     }
     .btn.primary{
@@ -192,9 +160,6 @@
       color:#14120d;
       border-color: rgba(255,255,255,.18);
       box-shadow: 0 16px 36px rgba(244,166,51,.18);
-    }
-    .btn.primary:hover{
-      box-shadow: 0 18px 44px rgba(244,166,51,.28);
     }
 
     /* HERO */
@@ -211,10 +176,8 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
-      position:relative;
+      transition: box-shadow .16s ease, border-color .16s ease;
     }
-
-    /* Hover glow on all key cards */
     .card:hover{
       border-color: rgba(244,166,51,.26);
       box-shadow:
@@ -225,48 +188,19 @@
 
     .hero-left{ padding: 26px; }
     .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px; border-radius: 999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.16);
       color: rgba(255,255,255,.86);
-      font-weight:750;
-      font-size: 13px;
+      font-weight:750; font-size: 13px;
     }
     .kicker b{ color: var(--brand); }
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(34px, 4.6vw, 52px);
-      line-height: 1.02;
-      letter-spacing: -.8px;
-    }
-    .lead{
-      margin: 0 0 16px;
-      color: var(--muted);
-      max-width: 58ch;
-      font-size: 15.5px;
-      line-height: 1.55;
-    }
+    h1{ margin: 14px 0 10px; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -.8px; }
+    .lead{ margin: 0 0 16px; color: var(--muted); max-width: 58ch; font-size: 15.5px; line-height: 1.55; }
 
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 14px;
-      align-items:center;
-    }
-    .emailbar{
-      margin-top: 12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      color: rgba(255,255,255,.86);
-      font-weight:700;
-    }
+    .cta-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; align-items:center; }
+    .emailbar{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; color: rgba(255,255,255,.86); font-weight:700; }
     .emailbar code{
       background: rgba(0,0,0,.22);
       border:1px solid rgba(255,255,255,.10);
@@ -276,16 +210,9 @@
       font-size: 12.5px;
     }
 
-    .checks{
-      margin-top: 14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+    .checks{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
     .check{
-      display:flex;
-      align-items:center;
-      gap:8px;
+      display:flex; align-items:center; gap:8px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.12);
       padding: 9px 12px;
@@ -294,71 +221,32 @@
       font-size: 12.5px;
       color: rgba(255,255,255,.86);
     }
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: var(--brand);
-      box-shadow: 0 0 18px rgba(244,166,51,.25);
-    }
+    .dot{ width:10px;height:10px;border-radius:999px; background: var(--brand); box-shadow: 0 0 18px rgba(244,166,51,.25); }
 
-    .hero-right{
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .mini{
-      padding: 16px;
-      background: var(--panel2);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-    }
+    .hero-right{ padding: 18px; display:flex; flex-direction:column; gap:12px; }
+    .mini{ padding: 16px; background: var(--panel2); border:1px solid rgba(255,255,255,.10); border-radius: 14px; }
     .mini h3{ margin:0 0 6px; font-size: 14px; letter-spacing:.2px; }
     .mini p{ margin:0; color: var(--muted); font-size: 13.5px; line-height:1.45; }
 
-    /* SECTIONS */
     section{ margin-top: 18px; }
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      padding: 0 4px;
-      margin: 18px 0 10px;
-    }
-    .section-head h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing:-.2px;
-    }
-    .section-head p{
-      margin:0;
-      color: var(--muted);
-      max-width: 62ch;
-      font-size: 13.5px;
-      line-height: 1.45;
-    }
+    .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:14px; padding: 0 4px; margin: 18px 0 10px; }
+    .section-head h2{ margin:0; font-size: 22px; letter-spacing:-.2px; }
+    .section-head p{ margin:0; color: var(--muted); max-width: 62ch; font-size: 13.5px; line-height: 1.45; }
 
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+    .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
-    /* Service cards - clean */
     .svc{
       padding: 18px 20px 18px 24px;
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 14px;
-      background: rgba(0,0,0,.18); /* more transparent */
+      background: rgba(0,0,0,.18);
       min-height: 120px;
       position: relative;
       transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
     }
     .svc:before{
       content:"";
-      position:absolute;
-      left:0; top:0; bottom:0;
-      width:4px;
+      position:absolute; left:0; top:0; bottom:0; width:4px;
       background: var(--brand);
       border-radius:14px 0 0 14px;
       opacity:.95;
@@ -366,29 +254,16 @@
     .svc:hover{
       transform: translateY(-2px);
       border-color: rgba(244,166,51,.28);
-      box-shadow:
-        0 18px 46px rgba(0,0,0,.40),
-        0 0 40px rgba(244,166,51,.12);
+      box-shadow: 0 18px 46px rgba(0,0,0,.40), 0 0 40px rgba(244,166,51,.12);
       background: rgba(0,0,0,.22);
     }
-    .svc h3{
-      margin:0 0 8px;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -.1px;
-    }
-    .svc ul{
-      margin:0;
-      padding-left: 16px;
-      color: rgba(255,255,255,.84);
-      line-height: 1.5;
-      font-size: 13.2px;
-    }
+    .svc h3{ margin:0 0 8px; font-size: 17px; font-weight: 800; }
+    .svc ul{ margin:0; padding-left: 16px; color: rgba(255,255,255,.84); line-height: 1.5; font-size: 13.2px; }
 
-    /* FORCE REMOVE any icon/letter/number boxes even if old HTML still has them */
+    /* Kill any icon/letter/number boxes */
     .icon, .badge, .chip, .svc .icon, .svc .badge, .svc .chip,
     .svc [class*="icon"], .svc [class*="badge"], .svc [class*="chip"],
-    .svc .num, .svc .letter, .svc .step, .svc .pill, .svc .tag{
+    .svc .num, .svc .letter, .svc .step, .svc .tag{
       display:none !important;
       visibility:hidden !important;
       width:0 !important;
@@ -398,64 +273,47 @@
       border:0 !important;
     }
 
-    /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+    /* Gallery (3 images) */
+    .gallery{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .shot{
       border-radius: 16px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
-      min-height: 170px;
+      min-height: 210px;
       position:relative;
       box-shadow: 0 12px 40px rgba(0,0,0,.35);
     }
     .shot img{
-      width:100%;
-      height:100%;
+      width:100%; height:100%;
       object-fit: cover;
       display:block;
-      filter: contrast(1.05) saturate(1.05);
-      opacity: .92;
+      opacity: .94;
       transition: transform .22s ease, opacity .22s ease;
     }
     .shot:hover img{ transform: scale(1.04); opacity: 1; }
     .cap{
-      position:absolute;
-      left:12px; right:12px; bottom:12px;
-      padding: 10px 12px;
-      border-radius: 12px;
+      position:absolute; left:12px; right:12px; bottom:12px;
+      padding: 10px 12px; border-radius: 12px;
       background: rgba(0,0,0,.40);
       border:1px solid rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
-      font-weight:800;
-      font-size: 13px;
+      font-weight:800; font-size: 13px;
     }
 
-    /* Footer */
     footer{
       margin-top: 22px;
       padding-top: 18px;
       border-top: 1px solid rgba(255,255,255,.10);
       color: rgba(255,255,255,.72);
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
       font-size: 13px;
     }
     footer a{ text-decoration:underline; text-underline-offset: 2px; }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero{ grid-template-columns: 1fr; }
-      .nav .row{ flex-wrap:wrap; }
-      .brand{ min-width: auto; }
-      .navcta{ min-width: auto; }
       .grid-3{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: 1fr; }
     }
@@ -524,25 +382,15 @@
       <aside class="card hero-right" aria-label="Quick info">
         <div class="mini">
           <h3>What we move</h3>
-          <p>
-            CNCs • presses • conveyors • chillers • transformers •
-            lines • forklifts • crates &amp; skids
-          </p>
+          <p>CNCs • presses • conveyors • chillers • transformers • lines • forklifts • crates &amp; skids</p>
         </div>
-
         <div class="mini">
           <h3>Typical work</h3>
-          <p>
-            Rigging &amp; setting • machinery moving • plant relocations •
-            shutdown support • precision alignment
-          </p>
+          <p>Rigging &amp; setting • machinery moving • plant relocations • shutdown support • precision alignment</p>
         </div>
-
         <div class="mini">
           <h3>Need service this week?</h3>
-          <p>
-            Tell us the site + equipment weight + access details and we’ll respond fast.
-          </p>
+          <p>Tell us the site + equipment weight + access details and we’ll respond fast.</p>
         </div>
       </aside>
     </section>
@@ -565,7 +413,6 @@
               <li>Confined access moves</li>
             </ul>
           </div>
-
           <div class="svc">
             <h3>Machinery Moving</h3>
             <ul>
@@ -574,7 +421,6 @@
               <li>Crating &amp; protection</li>
             </ul>
           </div>
-
           <div class="svc">
             <h3>Plant Relocations</h3>
             <ul>
@@ -604,7 +450,6 @@
               <li>Clean handling and placement</li>
             </ul>
           </div>
-
           <div class="svc">
             <h3>Fabrication</h3>
             <ul>
@@ -612,7 +457,6 @@
               <li>Anchoring and layout</li>
             </ul>
           </div>
-
           <div class="svc">
             <h3>Industrial / Utilities</h3>
             <ul>
@@ -641,7 +485,6 @@
               <li>Access and site conditions</li>
             </ul>
           </div>
-
           <div class="svc">
             <h3>Plan</h3>
             <ul>
@@ -649,7 +492,6 @@
               <li>Protection + route planning</li>
             </ul>
           </div>
-
           <div class="svc">
             <h3>Execute</h3>
             <ul>
@@ -665,35 +507,22 @@
       <div class="section-head">
         <div>
           <h2>Gallery</h2>
-          <p>Add your job photos anytime. Replace the image links below with your own pictures later.</p>
+          <p>Real jobs. Real results. (These are your photos.)</p>
         </div>
       </div>
 
       <div class="gallery">
-        <!-- Replace these with your real photos later -->
         <div class="shot">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1581091870622-2fce5f7f7aa6?auto=format&fit=crop&w=1600&q=70" alt="Industrial rigging work" />
+          <img loading="lazy" src="gallery-1.jpg" alt="Titan rigging job photo 1" />
           <div class="cap">Rigging &amp; Setting</div>
         </div>
         <div class="shot">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1581092160607-ee67a9b32f04?auto=format&fit=crop&w=1600&q=70" alt="Machinery moving" />
+          <img loading="lazy" src="gallery-2.jpg" alt="Titan rigging job photo 2" />
           <div class="cap">Machinery Moving</div>
         </div>
         <div class="shot">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1600&q=70" alt="Plant relocation" />
+          <img loading="lazy" src="gallery-3.jpg" alt="Titan rigging job photo 3" />
           <div class="cap">Plant Relocations</div>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1581092583537-20d51b4b4b87?auto=format&fit=crop&w=1600&q=70" alt="Forklift and heavy equipment" />
-          <div class="cap">Heavy Equipment</div>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=70" alt="Team and planning" />
-          <div class="cap">Planning &amp; Safety</div>
-        </div>
-        <div class="shot">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1581092919535-7146f6c5cc6a?auto=format&fit=crop&w=1600&q=70" alt="Industrial facility" />
-          <div class="cap">Industrial Facilities</div>
         </div>
       </div>
     </section>
@@ -724,12 +553,8 @@
 
           <div class="mini">
             <h3>What to include</h3>
-            <p>
-              Location, machine make/model, approximate weight, dims, access constraints (doors/ramps/overhead), and target dates.
-            </p>
-            <p style="margin-top:10px;">
-              If you have photos, attach them to the email—helps us quote faster and safer.
-            </p>
+            <p>Location, machine make/model, approximate weight, dims, access constraints (doors/ramps/overhead), and target dates.</p>
+            <p style="margin-top:10px;">If you have photos, attach them to the email—helps us quote faster and safer.</p>
           </div>
         </div>
       </div>
