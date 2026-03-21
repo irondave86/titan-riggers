@@ -199,6 +199,17 @@
       background:var(--brand);
       box-shadow:0 0 0 5px rgba(245,182,74,.12);
     }
+    .trust {
+  margin-top: 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.6px;
+}
+
+.trust::before {
+  content: "✔ ";
+  color: var(--brand);
+}
     .btn{
       display:inline-flex;
       align-items:center;
@@ -603,9 +614,9 @@
 
           <div class="hero-cta">
             <a class="btn" href="#contact">Request a Quote</a>
-            <a class="btn ghost" href="#services">See Services</a>
             <a class="pill" href="tel:2534123370"><span class="dot"></span> Call 253-412-3370</a>
           </div>
+          <p class="trust">Licensed • Insured • Union Riggers</p>       
         </div>
 
         <div class="hero-card">
