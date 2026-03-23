@@ -572,6 +572,32 @@
       .contact{grid-template-columns:1fr;}
     }
   </style>
+
+<style>
+  /* Mobile fix: Make hero background less zoomed/cropped on phones */
+  @media (max-width: 768px) {
+    .bg-logo {
+      background-size: cover !important;          /* Change from fixed 1100px to full cover scaling */
+      background-position: center 35% !important;  /* Shift down to frame the worker better (less top crop on face/helmet) */
+      background-attachment: scroll !important;    /* Avoid fixed causing extra zoom on iOS/mobile */
+      opacity: 0.22 !important;                    /* Slight increase for visibility on small screens */
+    }
+
+    .bg-logo img {
+      width: 70vw !important;                      /* Make overlay PNG larger on mobile if using */
+      opacity: 0.12 !important;
+    }
+
+    /* Shorten the top hero section to reduce required bg stretch */
+    header, .section:first-of-type, body > div:first-child {
+      min-height: 65vh !important;
+      padding-top: 60px !important;
+      padding-bottom: 40px !important;
+      height: auto !important;
+    }
+  }
+</style>
+  
 </head>
 
 <body>
