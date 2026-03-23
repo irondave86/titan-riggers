@@ -574,9 +574,12 @@
   </style>
 @media (max-width: 767px) {
   .bg-logo {
-    background-size: contain !important;    /* Makes image fit without cropping/zooming in aggressively */
-    background-position: center 40% !important;  /* Shifts down a bit so worker is centered better */
-    height: 50vh !important;                /* Keeps the background area shorter on phone */
+    background-size: 70% auto !important;     /* Scale to 70% width, auto height — makes it smaller overall */
+    background-position: center 45% !important; /* Shift down more for better centering */
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    height: 55vh !important;                  /* Slightly taller than 50vh to fill better without zoom */
+    opacity: 0.25 !important;                 /* Softer/fainter if it helps balance */
   }
 }
   
