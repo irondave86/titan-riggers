@@ -572,6 +572,14 @@
       .contact{grid-template-columns:1fr;}
     }
   </style>
+@media (max-width: 767px) {
+  .bg-logo {
+    background-size: contain !important;    /* Makes image fit without cropping/zooming in aggressively */
+    background-position: center 40% !important;  /* Shifts down a bit so worker is centered better */
+    height: 50vh !important;                /* Keeps the background area shorter on phone */
+  }
+}
+  
   </head>
 
 <body>
