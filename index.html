@@ -835,19 +835,90 @@
 
   <hr class="divider"/>
 
+
 <!-- GALLERY -->
 <section id="gallery" class="section">
   <div class="wrap">
-    <h2>Gallery</h2>
-    <p class="sub">A few recent projects.</p>
+    <h2>Our Work</h2>
+    <p class="sub">Industrial Rigging & Machinery Moving Projects</p>
 
-    <div class="gallery-grid" style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
-      <img src="IMG_0018.jpeg" alt="Titan Riggers industrial rigging job" class="gallery-img" style="width:220px; height:auto;">
-      <img src="IMG_5959.jpeg" alt="Heavy machinery moving and rigging" class="gallery-img" style="width:220px; height:auto;">
-     <img src="IMG_5963.jpeg" alt="Crane and rigging setup in Washington" class="gallery-img" style="width:220px; height:auto;">
+    <style>
+      .titan-gallery {
+        overflow: hidden;
+        width: 100%;
+        margin-top: 25px;
+      }
+      .titan-track {
+        display: flex;
+        gap: 16px;
+        width: max-content;
+        animation: titanScroll 65s linear infinite;
+      }
+      .titan-track img {
+        width: 300px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .titan-gallery:hover .titan-track {
+        animation-play-state: paused;
+      }
+      @keyframes titanScroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .titan-track { animation: none; }
+        .titan-gallery { overflow-x: auto; }
+      }
+    </style>
+
+    <div class="titan-gallery">
+      <div class="titan-track" id="titanTrack"></div>
     </div>
   </div>
 </section>
+
+<script>
+  const titanPhotos = [
+    "IMG_0018.jpeg",
+    "IMG_5959.jpeg",
+    "IMG_5963.jpeg",
+    "20261028_122548.jpeg",
+    "20261028_122756.jpeg",
+    "20261028_122811.jpeg",
+    "4215.jpeg",
+    "IMG_0196.jpeg",
+    "IMG_0317.jpeg",
+    "IMG_6009.jpeg",
+    "IMG_6015.jpeg",
+    "IMG_6031.jpeg",
+    "IMG_6079.jpeg",
+    "IMG_6087.jpeg",
+    "IMG_6089.jpeg",
+    "IMG_6176.jpeg",
+    "IMG_6190.jpeg",
+    "IMG_6512.jpeg",
+    "IMG_6515.jpeg",
+    "IMG_6522.jpeg"
+  ];
+
+  const titanTrack = document.getElementById("titanTrack");
+
+  [...titanPhotos, ...titanPhotos].forEach((photo, index) => {
+    const img = document.createElement("img");
+    img.src = photo;
+    img.alt = "Titan Riggers industrial rigging project";
+    img.loading = index < titanPhotos.length ? "eager" : "lazy";
+    img.addEventListener("click", () => {
+      window.open(photo, "_blank");
+    });
+    titanTrack.appendChild(img);
+  });
+</script>
+
   <hr class="divider"/>
 
   <!-- FAQ -->
